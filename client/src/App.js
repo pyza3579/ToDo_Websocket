@@ -64,7 +64,7 @@ class App extends React.Component {
             {tasks.map(task => (
               <li key= {task.id} className="task">
                 {task.name}
-                <button className="btn btn-remove" onClick={() => this.removeTask(task)}>Remove</button>
+                <button className="btn btn--red" onClick={() => this.removeTask(task)}>Remove</button>
               </li>
             ))}
           </ul>

@@ -2,7 +2,7 @@ const express = require('express');
 const socket = require('socket.io');
 const app = express();
 
-const tasks = [
+let tasks = [
   { id: 'dfsadf324s', name: 'Shopping'}, 
   { id: 'dfs2ad6724s', name: 'Go out with a dog'},
 ];
@@ -17,10 +17,12 @@ io.on('connection', (socket) => {
   //console.log('New client! Its id – ' + task);
   socket.emit('updateData', tasks);
 
-  socket.on('addTask', (task) => {
-    console.log('New task: ' + task);
-    tasks.push(task);
-    socket.broadcast.emit('addTask', task);
+  socket.on('addTask', ({id, name}) => {
+    tasks.push({
+      id: id,
+      name: name,
+    });
+    socket.broadcast.emit('addTask', ({id, name}));
   });
   socket.on('removeTask', (id) => {
     console.log('Task removed: ' + task);
@@ -29,7 +31,6 @@ io.on('connection', (socket) => {
   });
 
 });
-
 
 app.use((req, res) => {
   res.status(404).send({ message: 'Not found...' });
