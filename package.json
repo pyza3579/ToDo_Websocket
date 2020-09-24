@@ -1,0 +1,16 @@
+{
+  "name": "ToDo_Websocket",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:pyza3579/ToDo_Websocket.git",
+  "author": "Iza Witkowska <isa.witkowska@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "socket.io": "2.2.0"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  }
+}
